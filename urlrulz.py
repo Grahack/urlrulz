@@ -4,6 +4,8 @@
 Reads lines in `urlz.txt` as `url [content]` and checks them all.
 See sample `urlz.txt` file.
 
+Filename(s) can also be specified on the command line.
+
 Some errors are not nicely presented to the user (stacktrace instead):
 
 * Bad server name,
@@ -12,6 +14,7 @@ Some errors are not nicely presented to the user (stacktrace instead):
 
 """
 
+import sys
 import urllib2
 
 def check(filename='urlz.txt'):
@@ -31,4 +34,8 @@ def check(filename='urlz.txt'):
             exit(tpl.format(url, expected_content, actual_content))
 
 if __name__ == '__main__':
-    check()
+    if len(sys.argv) == 1:
+        check()
+    else:
+        for filename in sys.argv[1:]:
+            check(filename)
