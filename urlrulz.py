@@ -25,11 +25,10 @@ def check(filename='urlz.txt'):
         if not url or url.startswith('#'):
             continue
         expected_content = expected_content.lstrip()
-        actual_content = urllib2.urlopen(url).read()
-        stripped_content = actual_content.rstrip('\n')
-        if stripped_content != expected_content:
+        actual_content = urllib2.urlopen(url).read().rstrip('\n')
+        if actual_content != expected_content:
             tpl = """At {}, expected \n'{}' but got \n'{}'"""
-            exit(tpl.format(url, expected_content, stripped_content))
+            exit(tpl.format(url, expected_content, actual_content))
 
 if __name__ == '__main__':
     check()
