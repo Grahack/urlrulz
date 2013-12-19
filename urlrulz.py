@@ -27,6 +27,7 @@ def check(filename='urlz.txt'):
             url, expected_content = splitted_line
         if not url or url.startswith('#'):
             continue
+        print("Testing {}...".format(url))
         if expected_content is not None:
             expected_content = expected_content.lstrip()
             actual_content = urllib2.urlopen(url).read().rstrip('\n')
