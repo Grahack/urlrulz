@@ -3,7 +3,7 @@
 
 # Format is:
 # URL content  (multispace allowed between URL and content)
-# URL          -> content is then the URL itself
+# URL          -> presence only is checked, not content
 
 http://profgra.org/test.txt
 http://profgra.org/lycee/squelettes/python3basicserver.bat C:\Python32\python -m http.server 8000
