@@ -2,8 +2,9 @@
 # Empty lines allowed.
 
 # Format is:
-# URL content     
+# URL content  (multispace allowed between URL and content)
 # URL          -> content is then the URL itself
 
 http://profgra.org/test.txt
 http://profgra.org/lycee/squelettes/python3basicserver.bat C:\Python32\python -m http.server 8000
+http://profgra.org/lycee/squelettes/python3basicserver.bat    C:\Python32\python -m http.server 8000
