@@ -33,7 +33,8 @@ def check(filename='urlz.txt'):
             actual_content = request.urlopen(url).read().decode("utf-8").rstrip('\n')
             if actual_content != expected_content:
                 tpl = """At {}, expected \n'{}' but got \n'{}'"""
-                exit(tpl.format(url, expected_content, actual_content))
+                print(tpl.format(url, expected_content, actual_content))
+                break
         else:
             request.urlopen(url)
 
