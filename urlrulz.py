@@ -30,7 +30,7 @@ def check(filename='urlz.txt'):
         print("Testing {}...".format(url))
         if expected_content is not None:
             expected_content = expected_content.lstrip()
-            actual_content = str(request.urlopen(url).read()).rstrip('\n')
+            actual_content = request.urlopen(url).read().decode("utf-8").rstrip('\n')
             if actual_content != expected_content:
                 tpl = """At {}, expected \n'{}' but got \n'{}'"""
                 exit(tpl.format(url, expected_content, actual_content))
