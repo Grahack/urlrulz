@@ -15,7 +15,7 @@ Some errors are not nicely presented to the user (stacktrace instead):
 """
 
 import sys
-import urllib2
+from urllib import request
 
 def check(filename='urlz.txt'):
     "Check URLs in the given file."
@@ -30,12 +30,12 @@ def check(filename='urlz.txt'):
         print("Testing {}...".format(url))
         if expected_content is not None:
             expected_content = expected_content.lstrip()
-            actual_content = urllib2.urlopen(url).read().rstrip('\n')
+            actual_content = str(request.urlopen(url).read()).rstrip('\n')
             if actual_content != expected_content:
                 tpl = """At {}, expected \n'{}' but got \n'{}'"""
                 exit(tpl.format(url, expected_content, actual_content))
         else:
-            urllib2.urlopen(url)
+            request.urlopen(url)
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
