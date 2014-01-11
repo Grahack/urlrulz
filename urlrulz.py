@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Simple URL tester.
 
 Reads lines in `urlz.txt` as `url [content]` and checks them all.
