@@ -6,7 +6,7 @@ See sample `urlz.txt` file.
 
 Filename(s) can also be specified on the command line.
 
-Some errors are not nicely presented to the user (stacktrace instead):
+The base urllib exception is catched to nicely display errors of type:
 
 * Bad server name,
 * 404,
@@ -16,6 +16,7 @@ Some errors are not nicely presented to the user (stacktrace instead):
 
 import sys
 from urllib import request
+from urllib.error import URLError
 
 def check(filename='urlz.txt'):
     "Check URLs in the given file."
@@ -36,7 +37,11 @@ def check(filename='urlz.txt'):
                 print(tpl.format(url, expected_content, actual_content))
                 break
         else:
-            request.urlopen(url)
+            try:
+                request.urlopen(url)
+            except URLError as e:
+                print(e)
+                break
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
